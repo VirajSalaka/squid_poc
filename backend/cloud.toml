@@ -1,0 +1,10 @@
+ [container.image]
+ repository="vsalaka" # ex - Docker hub name
+ name="balbe" # container name
+ tag="0.0.1"
+base="adoptopenjdk/openjdk11:aarch64-ubuntu-jre-11.0.14.1_1"
+[container.image.user]
+run_as="ballerina"
+
+ [settings]
+ buildImage=true # you can make this false if you don't want to build the image and you just need the Dockerfile

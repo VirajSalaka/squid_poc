@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile-proxy
+    depends_on:
+    - service-squid
+    ports:
+    - 10000:10000
+    - 9901:9901
+  service-squid:
+    build:
+      context: squid
+      dockerfile: Dockerfile-squid
+    depends_on:
+    - backend
+    hostname: service-squid
+  backend:
+    image: balbe:0.0.2
+    hostname: backend
+    environment:
+    - HTTP_PORT=0
